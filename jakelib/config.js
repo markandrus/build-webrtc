@@ -15,12 +15,14 @@ var DEFAULT_WEBRTC_GIT_REF = DEFAULTS.webrtc.ref;
 var DEFAULT_WEBRTC_REPO = DEFAULTS.webrtc.repo;
 
 // Configuration
-var DEPOT_TOOLS = process.env.DEPOT_TOOLS || DEFAULT_DEPOT_TOOLS;
+var DEPOT_TOOLS = path.resolve(process.env.DEPOT_TOOLS || DEFAULT_DEPOT_TOOLS);
 var DEPOT_TOOLS_REPO = process.env.DEPOT_TOOLS_REPO || DEFAULT_DEPOT_TOOLS_REPO;
 var GCLIENT = path.join(DEPOT_TOOLS, 'gclient');
-var WEBRTC = process.env.WEBRTC || DEFAULT_WEBRTC;
+var WEBRTC = path.resolve(process.env.WEBRTC || DEFAULT_WEBRTC);
 var WEBRTC_GIT_REF = process.env.WEBRTC_GIT_REF || DEFAULT_WEBRTC_GIT_REF;
 var WEBRTC_REPO = process.env.WEBRTC_REPO || DEFAULT_WEBRTC_REPO;
+var WEBRTC_SRC = path.join(WEBRTC, 'src');
+var _GCLIENT = path.join(WEBRTC, '.gclient');
 
 exports.DEPOT_TOOLS = DEPOT_TOOLS;
 exports.DEPOT_TOOLS_REPO = DEPOT_TOOLS_REPO;
@@ -28,3 +30,5 @@ exports.GCLIENT = GCLIENT;
 exports.WEBRTC = WEBRTC;
 exports.WEBRTC_GIT_REF = WEBRTC_GIT_REF;
 exports.WEBRTC_REPO = WEBRTC_REPO;
+exports.WEBRTC_SRC = WEBRTC_SRC;
+exports._GCLIENT = _GCLIENT;

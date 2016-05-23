@@ -24,7 +24,7 @@ function config(url, gclientOptions, execOptions) {
 
 function sync(gclientOptions, execOptions) {
   gclientOptions = Object.assign({
-    withBranchHeads: true
+    withBranchHeads: true,
     noHooks: false
   }, gclientOptions);
 

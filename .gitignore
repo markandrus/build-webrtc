@@ -1,6 +1,8 @@
 .gclient*
+_gclient*
 config.json
 depot_tools
 node_modules
+npm-debug.log
 out
 webrtc
