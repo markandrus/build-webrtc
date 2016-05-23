@@ -25,6 +25,7 @@ var WEBRTC = path.resolve(process.env.WEBRTC || DEFAULT_WEBRTC);
 var WEBRTC_GIT_REF = process.env.WEBRTC_GIT_REF || DEFAULT_WEBRTC_GIT_REF;
 var WEBRTC_REPO = process.env.WEBRTC_REPO || DEFAULT_WEBRTC_REPO;
 var WEBRTC_SRC = path.join(WEBRTC, 'src');
+var WEBRTC_OUT = path.join(WEBRTC_SRC, 'out', CONFIGURATION);
 var _GCLIENT = path.join(WEBRTC, '.gclient');
 
 exports.CONFIGURATION = CONFIGURATION;
@@ -36,4 +37,5 @@ exports.WEBRTC = WEBRTC;
 exports.WEBRTC_GIT_REF = WEBRTC_GIT_REF;
 exports.WEBRTC_REPO = WEBRTC_REPO;
 exports.WEBRTC_SRC = WEBRTC_SRC;
+exports.WEBRTC_OUT = WEBRTC_OUT;
 exports._GCLIENT = _GCLIENT;

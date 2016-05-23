@@ -3,10 +3,8 @@
 var environment = require('./environment');
 var colors = require('colors/safe');
 var config = require('./config');
-var execSync = require('child_process').execSync;
 var gclient = require('./gclient');
 var git = require('./git');
-var path = require('path');
 
 var DEPOT_TOOLS = config.DEPOT_TOOLS;
 var _GCLIENT = config._GCLIENT;

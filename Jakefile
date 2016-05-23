@@ -1,3 +1,3 @@
 'use strict';
 
-task('default', ['build-webrtc']);
+task('default', ['compress-webrtc']);
