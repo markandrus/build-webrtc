@@ -26,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/markandrus/build-webrtc/issues"
   },
-  "homepage": "https://github.com/markandrus/build-webrtc#readme"
+  "homepage": "https://github.com/markandrus/build-webrtc#readme",
+  "scripts": {
+    "checkout-depot_tools": "./node_modules/.bin/jake checkout-depot_tools",
+    "checkout-webrtc": "./node_modules/.bin/jake checkout-webrtc"
+  }
 }
