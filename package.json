@@ -2,13 +2,16 @@
   "name": "build-webrtc",
   "version": "0.1.0",
   "description": "Build WebRTC, archive the binaries, and upload them to S3",
-  "main": "index.js",
   "dependencies": {
+    "colors": "^1.1.2",
     "jake": "^8.0.12"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "checkout-depot_tools": "./node_modules/.bin/jake checkout-depot_tools",
+    "checkout-webrtc": "./node_modules/.bin/jake checkout-webrtc",
+    "build-webrtc": "./node_modules/.bin/jake build-webrtc",
+    "start": "./node_modules/.bin/jake"
   },
   "repository": {
     "type": "git",
@@ -26,9 +29,5 @@
   "bugs": {
     "url": "https://github.com/markandrus/build-webrtc/issues"
   },
-  "homepage": "https://github.com/markandrus/build-webrtc#readme",
-  "scripts": {
-    "checkout-depot_tools": "./node_modules/.bin/jake checkout-depot_tools",
-    "checkout-webrtc": "./node_modules/.bin/jake checkout-webrtc"
-  }
+  "homepage": "https://github.com/markandrus/build-webrtc#readme"
 }

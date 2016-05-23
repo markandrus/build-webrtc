@@ -45,5 +45,16 @@ function sync(gclientOptions, execOptions) {
   return execSync(cmd, execOptions);
 }
 
+function runHooks(execOptions) {
+  execOptions = Object.assign({
+    stdio: 'inherit'
+  }, execOptions);
+
+  var cmd = GCLIENT + ' runhooks';
+
+  return execSync(cmd, execOptions);
+}
+
 module.exports.config = config;
 module.exports.sync = sync;
+module.exports.runHooks = runHooks;
