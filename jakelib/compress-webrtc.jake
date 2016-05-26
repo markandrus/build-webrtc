@@ -27,11 +27,13 @@ task('compress-webrtc', ['build-webrtc'], function() {
 
   console.log(colors.green.underline('\nCopying build artifacts to "' + OUT_WEBRTC_LIB + '"\n'));
   var fileList = new jake.FileList();
-  fileList.include(path.join(WEBRTC_OUT, '*.a'));
+  fileList.include(path.join(WEBRTC_OUT, '**',
+    os.platform() === 'win32' ? '*.lib' : '*.a'));
   var files = fileList.toArray().map(function(file) {
     var rel = path.relative(WEBRTC_OUT, file);
-    var dest = path.join(OUT_WEBRTC_LIB, rel);
-    console.log('    ' + rel);
+    var basename = path.basename(file);
+    var dest = path.join(OUT_WEBRTC_LIB, basename);
+    console.log('    ' + rel + ' -> ' + dest);
     copySync(file, dest);
   });
 
@@ -39,7 +41,7 @@ task('compress-webrtc', ['build-webrtc'], function() {
   var branch = git.branch({ contains: 'HEAD' }, { cwd: WEBRTC_SRC, stdio: 'pipe' }).toString();
   var match = branch.match(/branch-heads\/([0-9]+)/);
   var branchHead = match ? match[1] : null;
-  var commit = git.showRef('HEAD', { abbrev: true, hash: true, head: true }, { cwd: WEBRTC_SRC, stdio: 'pipe' }).toString().split(os.EOL)[0];
+  var commit = git.showRef('HEAD', { abbrev: true, hash: true, head: true }, { cwd: WEBRTC_SRC, stdio: 'pipe' }).toString().split('\n')[0];
 
   var tarGz = 'webrtc';
   if (branchHead) {
