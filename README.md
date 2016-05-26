@@ -1,11 +1,8 @@
 build-webrtc
 ============
 
-This project
-
-1. Builds WebRTC,
-2. Archives the binaries, then
-3. Uploads the archive to NPM, GitHub, and/or S3 (optional)
+This project builds WebRTC, archives the binaries along with the headers, and
+then (eventually) uploads them to NPM, GitHub, and/or S3.
 
 Install
 -------
