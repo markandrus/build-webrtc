@@ -4,6 +4,7 @@
   "description": "Build WebRTC, archive the binaries, and upload them to S3",
   "dependencies": {
     "colors": "^1.1.2",
+    "find": "^0.2.4",
     "fs-extra": "^0.30.0",
     "jake": "^8.0.12",
     "tar-fs": "^1.13.0"
