@@ -1,14 +1,15 @@
+/* global desc:false, file:false, task:false */
 'use strict';
 
-var colors = require('colors/safe');
 var config = require('./config');
 var git = require('./git');
+var log = require('./log');
 
 var DEPOT_TOOLS = config.DEPOT_TOOLS;
 var DEPOT_TOOLS_REPO = config.DEPOT_TOOLS_REPO;
 
 file(DEPOT_TOOLS, function() {
-  console.log(colors.green.underline('\nCloning depot_tools\n'));
+  log('Cloning depot_tools');
   git.clone(DEPOT_TOOLS_REPO);
 });
 

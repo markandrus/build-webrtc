@@ -29,6 +29,13 @@ var WEBRTC_SRC = path.join(WEBRTC, 'src');
 var WEBRTC_OUT = computeWebRTCOut(WEBRTC_SRC, CONFIGURATION);
 var _GCLIENT = path.join(WEBRTC, '.gclient');
 
+/**
+ * Compute the WebRTC out directory (on Windows, this is actually suffixed with
+ * the architecture).
+ * @param {string} src - the WebRTC src directory
+ * @param {string} configuration - one of "Release" or "Debug"
+ * @returns {string} - the WebRTC out directory
+ */
 function computeWebRTCOut(src, configuration) {
   var out = path.join(src, 'out', configuration);
   if (os.platform() === 'win32' && os.arch() === 'x64') {
@@ -39,6 +46,11 @@ function computeWebRTCOut(src, configuration) {
 
 // NOTE(mroberts): Jake on Windows doesn't handle Windows drive letters; this
 // little workaround requires that we resolve paths on the same drive.
+/**
+ * Resolve a filepath (on Windows this actually chops off the drive letter).
+ * @param {string} filepath - any filepath
+ * @returns {string} - the resolved filepath
+ */
 function resolve(filepath) {
   return os.platform() === 'win32'
     ? path.resolve(filepath).replace(/[A-Z]:/, '')

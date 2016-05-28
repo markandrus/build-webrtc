@@ -34,6 +34,9 @@ switch (os.platform()) {
     process.env.DEPOT_TOOLS_WIN_TOOLCHAIN = 0;
     process.env.GYP_MSVS_VERSION = process.env.GYP_MSVS_VERSION || 2013;
     break;
+
+  default:
+    break;
 }
 
 GYP_DEFINES = GYP_DEFINES.join(' ');

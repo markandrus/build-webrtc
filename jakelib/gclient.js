@@ -4,6 +4,13 @@ var execSync = require('child_process').execSync;
 
 var GCLIENT = require('./config').GCLIENT;
 
+/**
+ * Run gclient config.
+ * @param {string} url - the URL to use
+ * @param {object} [gclientOptions] - gclient options
+ * @param {object} [execOptions] - exec options
+ * @returns {Buffer|String} - the stdout from the command
+ */
 function config(url, gclientOptions, execOptions) {
   gclientOptions = Object.assign({
     name: 'src'
@@ -22,6 +29,12 @@ function config(url, gclientOptions, execOptions) {
   return execSync(cmd, execOptions);
 }
 
+/**
+ * Run gclient sync.
+ * @param {object} [gclientOptions] - gclient options
+ * @param {object} [execOptions] - exec options
+ * @returns {Buffer|String} - the stdout from the command
+ */
 function sync(gclientOptions, execOptions) {
   gclientOptions = Object.assign({
     withBranchHeads: true,
@@ -45,6 +58,11 @@ function sync(gclientOptions, execOptions) {
   return execSync(cmd, execOptions);
 }
 
+/**
+ * Run gclient runhooks.
+ * @param {object} [execOptions] - exec options
+ * @returns {Buffer|String} - the stdout from the command
+ */
 function runHooks(execOptions) {
   execOptions = Object.assign({
     stdio: 'inherit'
