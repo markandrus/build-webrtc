@@ -2,6 +2,8 @@
 _gclient*
 config.json
 depot_tools
+include
+lib
 node_modules
 npm-debug.log
 out

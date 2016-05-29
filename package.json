@@ -11,11 +11,15 @@
     "tar-fs": "^1.13.0"
   },
   "scripts": {
+    "build-webrtc": "jake build-webrtc",
     "checkout-depot_tools": "jake checkout-depot_tools",
     "checkout-webrtc": "jake checkout-webrtc",
-    "compress-webrtc": "jake compress-webrtc",
-    "build-webrtc": "jake build-webrtc",
+    "copy-webrtc-headers": "jake copy-webrtc-headers",
+    "copy-webrtc-libs": "jake copy-webrtc-libs",
+    "download-webrtc": "jake download-webrtc",
     "lint": "eslint jakelib jakelib/*.jake Jakefile",
+    "package-webrtc": "jake package-webrtc",
+    "publish-webrtc": "jake publish-webrtc",
     "show-webrtc-branch-head": "jake show-webrtc-branch-head",
     "show-webrtc-commit": "jake show-webrtc-commit",
     "show-webrtc-tar.gz-name": "jake show-webrtc-tar.gz-name",
