@@ -1,43 +1,42 @@
 build-webrtc
 ============
 
-This project builds WebRTC, archives the binaries along with the headers, and
-then (eventually) uploads them to NPM, GitHub, and/or S3.
+This project packages [WebRTC](https://webrtc.org/native-code) libraries and
+headers.
 
 Install
 -------
 
 ```
-npm install
+npm install --save build-webrtc-0.50.0-49f7bd3
 ```
+
+**Binaries unavailable?** If binaries are unavailable for your particular
+combination of platform and architecture, build-webrtc can fallback to building
+from source. See [the build-webrtc documentation](docs/README.md) for more
+information.
 
 Usage
 -----
 
-This project takes care of downloading [depot_tools](https://chromium.googlesource.com/chromium/tools/depot_tools.git) and [WebRTC](https://webrtc.org), but you'll need to ensure you have [the prerequisite software to build WebRTC](https://webrtc.org/native-code/development/prerequisite-sw). Then, run
+Assuming install succeeds, you will have a lib directory containing WebRTC
+libraries and an include directory containing WebRTC headers. If you want to
+build a [Node Addon](https://nodejs.org/api/addons.html) or some other project
+that depends on WebRTC, set your linker and compiler flags accordingly.
+
+Versioning
+----------
+
+WebRTC doesn't follow [SemVer](http://semver.org), and I'm not sure they have
+any API guarantees, even within branch heads. As such, this project only
+produces pre-releases of the form
 
 ```
-npm start
+0.$MAJOR.$PATCH-$COMMIT
 ```
 
-If everything works, you'll have an archive of WebRTC binaries in the `out`
-directory.
+Where `$MAJOR` is the WebRTC branch head, and `$COMMIT` is a particular commit
+within said branch head. For the most part, `$PATCH` should remain zero.
 
-### Customize the Build
-
-Already have [depot_tools](https://chromium.googlesource.com/chromium/tools/depot_tools.git)
-or a WebRTC checkout? You can skip fetching these dependencies by setting the
-`DEPOT_TOOLS` and/or `WEBRTC` environment variables, or you can create your
-own `config.json` by copying the existing
-[`config.default.json`](config.default.json).
-
-For a full list of variables, see below.
-
-| Environment Variable | `config.json` Variable | Description               |
-|:-------------------- |:---------------------- |:------------------------- |
-| `DEPOT_TOOLS`        | `depot_tools.path`     | The depot_tools directory |
-| `DEPOT_TOOLS_REPO`   | `depot_tools.repo`     | The depot_tools repo      |
-| `WEBRTC`             | `webrtc.path`          | The WebRTC directory      |
-| `WEBRTC_GIT_REF`     | `webrtc.path`          | The WebRTC git ref        |
-| `WEBRTC_REPO`        | `webrtc.repo`          | The WebRTC repo           |
-| `OUT`                | `out`                  | The output directory      |
+**You must rely on a specific pre-release version of build-webrtc in your
+project.**

@@ -1,10 +1,10 @@
 {
   "name": "build-webrtc",
-  "version": "0.1.0",
+  "version": "0.50.0-49f7bd3",
   "description": "Build WebRTC, archive the binaries, and upload them to S3",
   "dependencies": {
-    "aws-sdk": "2.x",
     "colors": "^1.1.2",
+    "download": "^5.0.0",
     "find": "^0.2.4",
     "fs-extra": "^0.30.0",
     "jake": "^8.0.12",
@@ -44,6 +44,7 @@
   "homepage": "https://github.com/markandrus/build-webrtc#readme",
   "devDependencies": {
     "eslint": "^2.11.0",
-    "eslint-config-eslint": "^3.0.0"
+    "eslint-config-eslint": "^3.0.0",
+    "s3": "^4.4.0"
   }
 }
