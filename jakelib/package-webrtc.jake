@@ -11,8 +11,7 @@ var WEBRTC_CHECKOUT_SRC = config.WEBRTC_CHECKOUT_SRC;
 
 desc('Package WebRTC');
 task('package-webrtc', [
-  'copy-webrtc-headers',
-  'copy-webrtc-libs',
+  'copy-webrtc',
   'write-webrtc-commit'
 ], function() {
   log('Computing the tar.gz filename');

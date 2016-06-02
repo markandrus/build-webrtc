@@ -70,6 +70,18 @@ short-circuit the initial `gclient sync`.
 `WEBRTC_REF` or the config.json variable `webrtc.ref` to your desired git
 ref.
 
+### copy-webrtc
+
+```
+npm run copy-webrtc
+   jake copy-webrtc
+```
+
+This command runs both copy-webrtc-headers and copy-webrtc-libraries.
+
+**Want to copy to a different directory?** Set the environment variable `OUT` to
+the desired directory.
+
 ### copy-webrtc-headers
 
 ```
@@ -80,6 +92,9 @@ npm run copy-webrtc-headers
 This command will copy WebRTC headers from your WebRTC checkout into the
 include directory.
 
+**Want to copy to a different directory?** Set the environment variable `OUT` to
+the desired directory.
+
 ### copy-webrtc-libs
 
 ```
@@ -89,14 +104,8 @@ npm run copy-webrtc-libs
 
 This command will copy libraries into the lib directory.
 
-### download-webrtc
-
-```
-npm run download-webrtc
-   jake download-webrtc
-```
-
-This command will download previously-published libraries and headers.
+**Want to copy to a different directory?** Set the environment variable `OUT` to
+the desired directory.
 
 ### lint
 
@@ -156,3 +165,15 @@ npm run show-webrtc-tar.gz-name
 
 This command will show the name of the gzipped tarball that package-webrtc
 will produce.
+
+### write-webrtc-commit
+
+```
+npm run write-webrtc-commit
+   jake write-webrtc-commit
+```
+
+Write the WebRTC commit to a file, WEBRTC_COMMIT.
+
+**Want to copy to a different directory?** Set the environment variable `OUT` to
+the desired directory.
