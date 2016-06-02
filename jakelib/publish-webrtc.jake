@@ -1,19 +1,29 @@
-/* global complete:false, desc:false, task:false */
+/* global complete:false, desc:false, fail:false, task:false */
 'use strict';
 
 var config = require('./config');
 var log = require('./log');
+var path = require('path');
 var upload = require('./upload');
 var webrtc = require('./webrtc');
 
-var ACCESS_KEY_ID = config.ACCESS_KEY_ID;
-var SECRET_ACCESS_KEY = config.SECRET_ACCESS_KEY;
-var BUCKET = config.BUCKET;
+var AWS_ACCESS_KEY_ID = config.AWS_ACCESS_KEY_ID;
+var AWS_SECRET_ACCESS_KEY = config.AWS_SECRET_ACCESS_KEY;
+var OUT = config.OUT;
+var S3_BUCKET = config.S3_BUCKET;
+var S3_REMOTE_PATH = config.S3_REMOTE_PATH;
+var WEBRTC_CHECKOUT_SRC = config.WEBRTC_CHECKOUT_SRC;
 
 desc('Publish WebRTC');
-task('publish-webrtc', ['package-webrtc'], function() {
-  var tarGzName = webrtc.tarGzName();
+// task('publish-webrtc', ['package-webrtc'], function() {
+task('publish-webrtc', [], function() {
+  var tarGzName = webrtc.tarGzName(WEBRTC_CHECKOUT_SRC);
   log('Uploading package WebRTC build to S3');
-  upload(ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET, tarGzName, 'builds/' + tarGzName)
-    .then(complete, complete);
+  upload(
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    S3_BUCKET,
+    path.join(OUT, tarGzName),
+    S3_REMOTE_PATH + '/' + tarGzName
+  ).then(complete, fail);
 }, { async: true });

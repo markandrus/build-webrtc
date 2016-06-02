@@ -1,4 +1,4 @@
-/* global complete:false, desc:false, task:false */
+/* global complete:false, desc:false, fail:false, task:false */
 'use strict';
 
 var config = require('./config');
@@ -22,5 +22,5 @@ task('package-webrtc', [
   log('Tar-ing and gzip-ing the artifacts');
   tarGz(OUT, tarGzName, {
     entries: ['include', 'lib', 'WEBRTC_COMMIT']
-  }).then(complete, complete);
+  }).then(complete, fail);
 }, { async: true });

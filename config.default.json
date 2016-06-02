@@ -9,5 +9,9 @@
     "ref": "branch-heads/50",
     "repo": "https://chromium.googlesource.com/external/webrtc.git"
   },
-  "out": "."
+  "out": ".",
+  "s3": {
+    "bucket": "webrtc-libraries-and-headers",
+    "remote_path": "v1/build"
+  }
 }

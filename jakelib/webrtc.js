@@ -45,6 +45,7 @@ function commit(cwd, gitOptions) {
  * @returns {string} - the tar.gz name
  */
 function tarGzName(cwd, out) {
+  out = out || '.';
   var bh = branchHead(cwd);
   var c = commit(cwd);
   var tarGz = 'webrtc';

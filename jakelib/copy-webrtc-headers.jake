@@ -1,4 +1,4 @@
-/* global complete:false, desc:false, directory:false, task:false */
+/* global complete:false, desc:false, directory:false, fail:false, task:false */
 'use strict';
 
 var config = require('./config');
@@ -13,5 +13,5 @@ directory(OUT_INCLUDE);
 desc('Copy WebRTC .h and .hpp files');
 task('copy-webrtc-headers', [OUT_INCLUDE], function() {
   log('Copying WebRTC .h and .hpp files to ' + OUT_INCLUDE);
-  copy.files(/\.h(pp)?$/, WEBRTC_CHECKOUT_SRC, OUT_INCLUDE).then(complete, complete);
+  copy.files(/\.h(pp)?$/, WEBRTC_CHECKOUT_SRC, OUT_INCLUDE).then(complete, fail);
 }, { async: true });

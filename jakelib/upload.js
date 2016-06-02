@@ -23,7 +23,7 @@ function upload(accessKeyId, secretAccessKey, bucket, src, dst) {
       localFile: src,
       s3Params: {
         Bucket: bucket,
-        key: dst
+        Key: dst
       }
     });
 
