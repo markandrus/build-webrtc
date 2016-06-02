@@ -95,11 +95,11 @@ include directory.
 **Want to copy to a different directory?** Set the environment variable `OUT` to
 the desired directory.
 
-### copy-webrtc-libs
+### copy-webrtc-libraries
 
 ```
-npm run copy-webrtc-libs
-   jake copy-webrtc-libs
+npm run copy-webrtc-libraries
+   jake copy-webrtc-libraries
 ```
 
 This command will copy libraries into the lib directory.

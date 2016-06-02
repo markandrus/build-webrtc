@@ -15,7 +15,7 @@
     "checkout-webrtc": "jake checkout-webrtc",
     "copy-webrtc": "jake copy-webrtc",
     "copy-webrtc-headers": "jake copy-webrtc-headers",
-    "copy-webrtc-libs": "jake copy-webrtc-libs",
+    "copy-webrtc-libraries": "jake copy-webrtc-libraries",
     "install": "jake",
     "lint": "eslint jakelib jakelib/*.jake Jakefile",
     "package-webrtc": "jake package-webrtc",

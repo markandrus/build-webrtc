@@ -11,7 +11,7 @@ var WEBRTC_OUT = config.WEBRTC_OUT;
 directory(OUT_LIB);
 
 desc('Copy WebRTC .a and .o or .lib files');
-task('copy-webrtc-libs', [OUT_LIB], function() {
+task('copy-webrtc-libraries', [OUT_LIB], function() {
   log('Copying WebRTC .a and .o or .lib files to ' + OUT_LIB);
   copy.files(/\.(a|o|lib)$/, WEBRTC_OUT, OUT_LIB).then(complete, fail);
 }, { async: true });
