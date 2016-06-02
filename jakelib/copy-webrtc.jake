@@ -2,4 +2,4 @@
 'use strict';
 
 desc('Copy WebRTC libraries and headers');
-task('copy-webrtc', ['copy-webrtc-headers', 'copy-webrtc-libraries']);
+task('copy-webrtc', ['build-webrtc', 'copy-webrtc-headers']);
