@@ -10,24 +10,33 @@ var DEFAULTS = fs.existsSync('../config.json')
   : require('../config.default');
 
 var DEFAULT_CONFIGURATION = DEFAULTS.configuration;
-var DEFAULT_DEPOT_TOOLS = DEFAULTS.depot_tools.path;
+var DEFAULT_DEPOT_TOOLS_CHECKOUT = DEFAULTS.depot_tools.checkout;
 var DEFAULT_DEPOT_TOOLS_REPO = DEFAULTS.depot_tools.repo;
-var DEFAULT_WEBRTC = DEFAULTS.webrtc.path;
-var DEFAULT_WEBRTC_GIT_REF = DEFAULTS.webrtc.ref;
+var DEFAULT_WEBRTC_CHECKOUT = DEFAULTS.webrtc.checkout;
+var DEFAULT_WEBRTC_REF = DEFAULTS.webrtc.ref;
 var DEFAULT_WEBRTC_REPO = DEFAULTS.webrtc.repo;
+var DEFAULT_OUT = DEFAULTS.out;
 
 // Configuration
 var CONFIGURATION = process.env.CONFIGURATION || DEFAULT_CONFIGURATION;
-var DEPOT_TOOLS = resolve(process.env.DEPOT_TOOLS || DEFAULT_DEPOT_TOOLS);
+
+var DEPOT_TOOLS_CHECKOUT = resolve(process.env.DEPOT_TOOLS_CHECKOUT || DEFAULT_DEPOT_TOOLS_CHECKOUT);
 var DEPOT_TOOLS_REPO = process.env.DEPOT_TOOLS_REPO || DEFAULT_DEPOT_TOOLS_REPO;
-var GCLIENT = path.join(DEPOT_TOOLS, 'gclient');
-var NINJA = path.join(DEPOT_TOOLS, 'ninja');
-var WEBRTC = resolve(process.env.WEBRTC || DEFAULT_WEBRTC);
-var WEBRTC_GIT_REF = process.env.WEBRTC_GIT_REF || DEFAULT_WEBRTC_GIT_REF;
+var GCLIENT = path.join(DEPOT_TOOLS_CHECKOUT, 'gclient');
+var NINJA = path.join(DEPOT_TOOLS_CHECKOUT, 'ninja');
+
+var OUT = resolve(process.env.OUT || DEFAULT_OUT);
+var OUT_COMMIT = path.join(OUT, 'WEBRTC_COMMIT');
+var OUT_INCLUDE = path.join(OUT, 'include');
+var OUT_LIB = path.join(OUT, 'lib');
+
+var WEBRTC_CHECKOUT = resolve(process.env.WEBRTC_CHECKOUT || DEFAULT_WEBRTC_CHECKOUT);
+var WEBRTC_CHECKOUT_GCLIENT = path.join(WEBRTC_CHECKOUT, '.gclient');
+var WEBRTC_CHECKOUT_SRC = path.join(WEBRTC_CHECKOUT, 'src');
+var WEBRTC_OUT = computeWebRTCOut(WEBRTC_CHECKOUT_SRC, CONFIGURATION);
+
+var WEBRTC_REF = process.env.WEBRTC_REF || DEFAULT_WEBRTC_REF;
 var WEBRTC_REPO = process.env.WEBRTC_REPO || DEFAULT_WEBRTC_REPO;
-var WEBRTC_SRC = path.join(WEBRTC, 'src');
-var WEBRTC_OUT = computeWebRTCOut(WEBRTC_SRC, CONFIGURATION);
-var _GCLIENT = path.join(WEBRTC, '.gclient');
 
 /**
  * Compute the WebRTC out directory (on Windows, this is actually suffixed with
@@ -58,13 +67,16 @@ function resolve(filepath) {
 }
 
 exports.CONFIGURATION = CONFIGURATION;
-exports.DEPOT_TOOLS = DEPOT_TOOLS;
+exports.DEPOT_TOOLS_CHECKOUT = DEPOT_TOOLS_CHECKOUT;
 exports.DEPOT_TOOLS_REPO = DEPOT_TOOLS_REPO;
 exports.GCLIENT = GCLIENT;
 exports.NINJA = NINJA;
-exports.WEBRTC = WEBRTC;
-exports.WEBRTC_GIT_REF = WEBRTC_GIT_REF;
-exports.WEBRTC_REPO = WEBRTC_REPO;
-exports.WEBRTC_SRC = WEBRTC_SRC;
+exports.OUT_COMMIT = OUT_COMMIT;
+exports.OUT_INCLUDE = OUT_INCLUDE;
+exports.OUT_LIB = OUT_LIB;
+exports.WEBRTC_CHECKOUT = WEBRTC_CHECKOUT;
+exports.WEBRTC_CHECKOUT_GCLIENT = WEBRTC_CHECKOUT_GCLIENT;
+exports.WEBRTC_CHECKOUT_SRC = WEBRTC_CHECKOUT_SRC;
 exports.WEBRTC_OUT = WEBRTC_OUT;
-exports._GCLIENT = _GCLIENT;
+exports.WEBRTC_REF = WEBRTC_REF;
+exports.WEBRTC_REPO = WEBRTC_REPO;

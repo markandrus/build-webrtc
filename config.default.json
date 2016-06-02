@@ -1,12 +1,13 @@
 {
   "configuration": "Release",
   "depot_tools": {
-    "path": "depot_tools",
+    "checkout": "depot_tools",
     "repo": "https://chromium.googlesource.com/chromium/tools/depot_tools.git"
   },
   "webrtc": {
-    "path": "webrtc",
+    "checkout": "webrtc",
     "ref": "branch-heads/50",
     "repo": "https://chromium.googlesource.com/external/webrtc.git"
-  }
+  },
+  "out": "."
 }

@@ -1,7 +1,5 @@
 'use strict';
 
-var s3 = require('s3');
-
 /**
  * Upload a file to S3.
  * @param {string} accessKeyId - AWS Access Key ID
@@ -12,6 +10,7 @@ var s3 = require('s3');
  * @returns {Promise} - resolves once the upload completes
  */
 function upload(accessKeyId, secretAccessKey, bucket, src, dst) {
+  var s3 = require('s3');
   return new Promise(function(resolve, reject) {
     var client = s3.createClient({
       s3Options: {

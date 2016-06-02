@@ -4,7 +4,6 @@
   "description": "Build WebRTC, archive the binaries, and upload them to S3",
   "dependencies": {
     "colors": "^1.1.2",
-    "download": "^5.0.0",
     "find": "^0.2.4",
     "fs-extra": "^0.30.0",
     "jake": "^8.0.12",
@@ -16,14 +15,15 @@
     "checkout-webrtc": "jake checkout-webrtc",
     "copy-webrtc-headers": "jake copy-webrtc-headers",
     "copy-webrtc-libs": "jake copy-webrtc-libs",
-    "download-webrtc": "jake download-webrtc",
+    "install": "jake",
     "lint": "eslint jakelib jakelib/*.jake Jakefile",
     "package-webrtc": "jake package-webrtc",
     "publish-webrtc": "jake publish-webrtc",
     "show-webrtc-branch-head": "jake show-webrtc-branch-head",
     "show-webrtc-commit": "jake show-webrtc-commit",
     "show-webrtc-tar.gz-name": "jake show-webrtc-tar.gz-name",
-    "start": "jake"
+    "start": "jake",
+    "write-webrtc-commit": "jake write-webrtc-commit"
   },
   "repository": {
     "type": "git",

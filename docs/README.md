@@ -49,9 +49,9 @@ npm run checkout-depot_tools
 
 This command will checkout [depot_tools](http://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools.html).
 
-**Already have depot_tools?** Set the environment variable `DEPOT_TOOLS` or the
-config.json variable `depot_tools.path` to your depot_tools checkout. This will
-short-circuit the command.
+**Already have depot_tools?** Set the environment variable
+`DEPOT_TOOLS_CHECKOUT` or the config.json variable `depot_tools.checkout` to
+your depot_tools checkout. This will short-circuit the command.
 
 ### checkout-webrtc
 
@@ -62,12 +62,12 @@ npm run checkout-webrtc
 
 This command will checkout WebRTC.
 
-**Already have WebRTC?** Set the environment variable `WEBRTC` or the
-config.json variable `webrtc.path` to your WebRTC checkout. This will
+**Already have WebRTC?** Set the environment variable `WEBRTC_CHECKOUT` or the
+config.json variable `webrtc.checkout` to your WebRTC checkout. This will
 short-circuit the initial `gclient sync`.
 
 **Want to check out a different git ref?** Set the environment variable
-`WEBRTC_GIT_REF` or the config.json variable `webrtc.ref` to your desired git
+`WEBRTC_REF` or the config.json variable `webrtc.ref` to your desired git
 ref.
 
 ### copy-webrtc-headers

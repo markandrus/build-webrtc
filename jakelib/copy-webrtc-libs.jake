@@ -5,12 +5,13 @@ var config = require('./config');
 var copy = require('./copy');
 var log = require('./log');
 
+var OUT_LIB = config.OUT_LIB;
 var WEBRTC_OUT = config.WEBRTC_OUT;
 
-directory('lib');
+directory(OUT_LIB);
 
-desc('Copy WebRTC .a and .o or .lib files to lib/');
-task('copy-webrtc-libs', ['lib'], function() {
-  log('Copying WebRTC .a and .o or .lib files to lib/');
-  copy.files(/\.(a|o|lib)$/, WEBRTC_OUT, 'lib').then(complete, complete);
+desc('Copy WebRTC .a and .o or .lib files');
+task('copy-webrtc-libs', [OUT_LIB], function() {
+  log('Copying WebRTC .a and .o or .lib files to ' + OUT_LIB);
+  copy.files(/\.(a|o|lib)$/, WEBRTC_OUT, OUT_LIB).then(complete, complete);
 }, { async: true });
