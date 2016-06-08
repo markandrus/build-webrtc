@@ -54,7 +54,7 @@ function tarGzName(cwd, out) {
   }
   return path.join(out, tarGz + '+' + [
     c,
-    os.platform(),
+    process.platform,
     os.arch(),
     'tar.gz'
   ].join('.'));

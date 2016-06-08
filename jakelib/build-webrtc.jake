@@ -1,4 +1,4 @@
-/* global task:false */
+/* global directory:false, task:false */
 'use strict';
 
 var config = require('./config');
@@ -8,6 +8,7 @@ var log = require('./log');
 var path = require('path');
 
 var OUT_LIB = config.OUT_LIB;
+var PYTHON = config.PYTHON;
 var WEBRTC_CHECKOUT_SRC = config.WEBRTC_CHECKOUT_SRC;
 var WEBRTC_OUT = config.WEBRTC_OUT;
 
@@ -18,10 +19,12 @@ task('build-webrtc', ['checkout-webrtc', OUT_LIB], function() {
   ninja(WEBRTC_OUT, { cwd: WEBRTC_CHECKOUT_SRC });
 
   log('Merging libs');
-  var mergeLibsCmd = execSync([
-    'python',
+  execSync([
+    PYTHON,
     path.join(WEBRTC_CHECKOUT_SRC, 'webrtc', 'build', 'merge_libs.py'),
     WEBRTC_OUT,
-    path.join(OUT_LIB, 'libwebrtc.a')].join(' '));
-  execSync(mergeLibsCmd, { stdio: 'inherit' });
+    path.join(OUT_LIB, process.platform === 'win32' ? 'libwebrtc.lib' : 'libwebrtc.a')
+  ].join(' '), {
+    stdio: 'inherit'
+  });
 });

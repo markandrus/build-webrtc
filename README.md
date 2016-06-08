@@ -1,8 +1,8 @@
 build-webrtc
 ============
 
-This project packages [WebRTC](https://webrtc.org/native-code) libraries and
-headers for use with the project [webrtc-libraries-and-headers](https://github.com/markandrus/webrtc-libraries-and-headers).
+This project compiles and packages [WebRTC](https://webrtc.org/native-code)
+libraries and headers.
 
 Install
 -------

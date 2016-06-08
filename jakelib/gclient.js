@@ -37,6 +37,7 @@ function config(url, gclientOptions, execOptions) {
  */
 function sync(gclientOptions, execOptions) {
   gclientOptions = Object.assign({
+    force: true,
     withBranchHeads: true,
     noHooks: false
   }, gclientOptions);
@@ -46,6 +47,10 @@ function sync(gclientOptions, execOptions) {
   }, execOptions);
 
   var cmd = GCLIENT + ' sync';
+
+  if (gclientOptions.force) {
+    cmd += ' --force';
+  }
 
   if (gclientOptions.withBranchHeads) {
     cmd += ' --with_branch_heads';

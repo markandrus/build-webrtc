@@ -1,10 +1,13 @@
 'use strict';
 
-var fs = require('fs');
+var config = require('./config');
 var os = require('os');
+var fs = require('fs');
+
+var TARGET_ARCH = process.env.TARGET_ARCH || os.arch();
 
 var GYP_DEFINES = [
-  'target_arch=' + os.arch(),
+  'target_arch=' + TARGET_ARCH,
   'host_arch=' + os.arch(),
   'build_with_chromium=0',
   'use_openssl=0',
@@ -16,7 +19,7 @@ var GYP_DEFINES = [
   'remove_webcore_debug_symbols=1'
 ];
 
-switch (os.platform()) {
+switch (process.platform) {
   case 'darwin':
     GYP_DEFINES.push('clang=1');
     break;
@@ -33,6 +36,7 @@ switch (os.platform()) {
   case 'win32':
     process.env.DEPOT_TOOLS_WIN_TOOLCHAIN = 0;
     process.env.GYP_MSVS_VERSION = process.env.GYP_MSVS_VERSION || 2013;
+    process.env.PATH = process.env.PATH + ';' + config.DEPOT_TOOLS_CHECKOUT;
     break;
 
   default:

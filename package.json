@@ -1,6 +1,6 @@
 {
   "name": "build-webrtc",
-  "version": "0.50.0-49f7bd3",
+  "version": "0.1.0",
   "description": "Build WebRTC, archive the binaries, and upload them to S3",
   "dependencies": {
     "colors": "^1.1.2",
