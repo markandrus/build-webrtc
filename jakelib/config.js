@@ -9,10 +9,12 @@ var DEFAULTS = fs.existsSync('../config.json')
   ? require('../config')
   : require('../config.default');
 
+var DEFAULT_ARCH = DEFAULTS.arch || os.arch();
 var DEFAULT_CONFIGURATION = DEFAULTS.configuration;
 var DEFAULT_DEPOT_TOOLS_CHECKOUT = DEFAULTS.depot_tools.checkout;
 var DEFAULT_DEPOT_TOOLS_REPO = DEFAULTS.depot_tools.repo;
 var DEFAULT_OUT = DEFAULTS.out;
+var DEFAULT_PLATFORM = DEFAULTS.platform || process.platform;
 var DEFAULT_S3_BUCKET = DEFAULTS.s3.bucket;
 var DEFAULT_S3_REMOTE_PATH = DEFAULTS.s3.remote_path;
 var DEFAULT_WEBRTC_CHECKOUT = DEFAULTS.webrtc.checkout;
@@ -20,6 +22,9 @@ var DEFAULT_WEBRTC_REF = DEFAULTS.webrtc.ref;
 var DEFAULT_WEBRTC_REPO = DEFAULTS.webrtc.repo;
 
 // Configuration
+var ARCH = process.env.TARGET_ARCH || DEFAULT_ARCH;
+var PLATFORM = process.env.TARGET_PLATFORM || DEFAULT_PLATFORM;
+
 var AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 
@@ -29,7 +34,7 @@ var DEPOT_TOOLS_CHECKOUT = resolve(process.env.DEPOT_TOOLS_CHECKOUT || DEFAULT_D
 var DEPOT_TOOLS_REPO = process.env.DEPOT_TOOLS_REPO || DEFAULT_DEPOT_TOOLS_REPO;
 var GCLIENT = path.join(DEPOT_TOOLS_CHECKOUT, 'gclient');
 var NINJA = path.join(DEPOT_TOOLS_CHECKOUT, 'ninja');
-var PYTHON = process.platform === 'win32' ? path.join(DEPOT_TOOLS_CHECKOUT, 'python.bat') : 'python';
+var PYTHON = PLATFORM === 'win32' ? path.join(DEPOT_TOOLS_CHECKOUT, 'python.bat') : 'python';
 
 var OUT = resolve(process.env.OUT || DEFAULT_OUT);
 var OUT_COMMIT = path.join(OUT, 'WEBRTC_COMMIT');
@@ -56,7 +61,7 @@ var WEBRTC_REPO = process.env.WEBRTC_REPO || DEFAULT_WEBRTC_REPO;
  */
 function computeWebRTCOut(src, configuration) {
   var out = path.join(src, 'out', configuration);
-  if (process.platform === 'win32' && os.arch() === 'x64') {
+  if (PLATFORM === 'win32' && ARCH === 'x64') {
     out += '_x64';
   }
   return out;
@@ -70,11 +75,12 @@ function computeWebRTCOut(src, configuration) {
  * @returns {string} - the resolved filepath
  */
 function resolve(filepath) {
-  return process.platform === 'win32'
+  return PLATFORM === 'win32'
     ? path.resolve(filepath).replace(/[A-Z]:/, '')
     : path.resolve(filepath);
 }
 
+exports.ARCH = ARCH;
 exports.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID;
 exports.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY;
 exports.CONFIGURATION = CONFIGURATION;
@@ -86,6 +92,7 @@ exports.OUT = OUT;
 exports.OUT_COMMIT = OUT_COMMIT;
 exports.OUT_INCLUDE = OUT_INCLUDE;
 exports.OUT_LIB = OUT_LIB;
+exports.PLATFORM = PLATFORM;
 exports.PYTHON = PYTHON;
 exports.S3_BUCKET = S3_BUCKET;
 exports.S3_REMOTE_PATH = S3_REMOTE_PATH;

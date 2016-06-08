@@ -8,6 +8,7 @@ var log = require('./log');
 var path = require('path');
 
 var OUT_LIB = config.OUT_LIB;
+var PLATFORM = config.PLATFORM;
 var PYTHON = config.PYTHON;
 var WEBRTC_CHECKOUT_SRC = config.WEBRTC_CHECKOUT_SRC;
 var WEBRTC_OUT = config.WEBRTC_OUT;
@@ -23,7 +24,7 @@ task('build-webrtc', ['checkout-webrtc', OUT_LIB], function() {
     PYTHON,
     path.join(WEBRTC_CHECKOUT_SRC, 'webrtc', 'build', 'merge_libs.py'),
     WEBRTC_OUT,
-    path.join(OUT_LIB, process.platform === 'win32' ? 'libwebrtc.lib' : 'libwebrtc.a')
+    path.join(OUT_LIB, PLATFORM === 'win32' ? 'libwebrtc.lib' : 'libwebrtc.a')
   ].join(' '), {
     stdio: 'inherit'
   });

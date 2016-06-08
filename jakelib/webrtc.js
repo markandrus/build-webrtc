@@ -1,8 +1,11 @@
 'use strict';
 
+var config = require('./config');
 var git = require('./git');
-var os = require('os');
 var path = require('path');
+
+var ARCH = config.ARCH;
+var PLATFORM = config.PLATFORM;
 
 /**
  * Get the branch-head of a WebRTC checkout, if any.
@@ -54,8 +57,8 @@ function tarGzName(cwd, out) {
   }
   return path.join(out, tarGz + '+' + [
     c,
-    process.platform,
-    os.arch(),
+    PLATFORM,
+    ARCH,
     'tar.gz'
   ].join('.'));
 }

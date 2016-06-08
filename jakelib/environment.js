@@ -4,10 +4,11 @@ var config = require('./config');
 var os = require('os');
 var fs = require('fs');
 
-var TARGET_ARCH = process.env.TARGET_ARCH || os.arch();
+var ARCH = config.ARCH;
+var PLATFORM = config.PLATFORM;
 
 var GYP_DEFINES = [
-  'target_arch=' + TARGET_ARCH,
+  'target_arch=' + ARCH,
   'host_arch=' + os.arch(),
   'build_with_chromium=0',
   'use_openssl=0',
@@ -19,7 +20,7 @@ var GYP_DEFINES = [
   'remove_webcore_debug_symbols=1'
 ];
 
-switch (process.platform) {
+switch (PLATFORM) {
   case 'darwin':
     GYP_DEFINES.push('clang=1');
     break;
