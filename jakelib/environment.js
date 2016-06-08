@@ -32,6 +32,7 @@ switch (PLATFORM) {
         ? '/usr/lib/jvm/java'
         : '/usr/lib/jvm/default-java';
     }
+    process.env.PATH = process.env.PATH + ':' + config.DEPOT_TOOLS_CHECKOUT;
     break;
 
   case 'win32':
