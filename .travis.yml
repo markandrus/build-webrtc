@@ -8,8 +8,20 @@ node_js:
 notifications:
   email: false
 
+cache:
+  directories:
+    - webrtc
+
+before_cache:
+  - rm -rf webrtc/src/out
+
+env:
+  global:
+    - CASHER_TIME_OUT=3600
+
 install:
-  - travis_wait 60 npm install
+  - npm install --ignore-scripts
+  - ./node_modules/.bin/jake `pwd`/webrtc/src
 
 script:
   - npm run lint
