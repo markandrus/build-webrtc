@@ -8,5 +8,8 @@ node_js:
 notifications:
   email: false
 
+install:
+  - travis_wait 60 npm install
+
 script:
   - npm run lint
