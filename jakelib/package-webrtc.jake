@@ -10,10 +10,7 @@ var OUT = config.OUT;
 var WEBRTC_CHECKOUT_SRC = config.WEBRTC_CHECKOUT_SRC;
 
 desc('Package WebRTC');
-task('package-webrtc', [
-  'copy-webrtc',
-  'write-webrtc-commit'
-], function() {
+task('package-webrtc', [], function() {
   log('Computing the tar.gz filename');
   var tarGzName = webrtc.tarGzName(WEBRTC_CHECKOUT_SRC, OUT);
   console.log('    ' + tarGzName);

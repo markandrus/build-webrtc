@@ -15,7 +15,6 @@ var S3_REMOTE_PATH = config.S3_REMOTE_PATH;
 var WEBRTC_CHECKOUT_SRC = config.WEBRTC_CHECKOUT_SRC;
 
 desc('Publish WebRTC');
-// task('publish-webrtc', ['package-webrtc'], function() {
 task('publish-webrtc', [], function() {
   var tarGzName = webrtc.tarGzName(WEBRTC_CHECKOUT_SRC);
   log('Uploading package WebRTC build to S3');
