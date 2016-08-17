@@ -15,7 +15,7 @@ var GYP_DEFINES = [
   'use_gtk=0',
   'use_x11=0',
   'include_examples=0',
-  'include_tests=0',
+  'include_tests=1',  // Needed for FakeAudioCaptureModule
   'fastbuild=1',
   'remove_webcore_debug_symbols=1'
 ];
