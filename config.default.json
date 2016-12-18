@@ -6,7 +6,7 @@
   },
   "webrtc": {
     "checkout": "webrtc",
-    "ref": "branch-heads/50",
+    "ref": "branch-heads/56",
     "repo": "https://chromium.googlesource.com/external/webrtc.git"
   },
   "out": ".",

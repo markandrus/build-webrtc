@@ -15,7 +15,7 @@ var WEBRTC_OUT = config.WEBRTC_OUT;
 
 directory(OUT_LIB);
 
-task('build-webrtc', ['checkout-webrtc', OUT_LIB], function() {
+task('build-webrtc', ['checkout-webrtc', 'gen-ninja-cfg', OUT_LIB], function() {
   log('Running ninja');
   ninja(WEBRTC_OUT, { cwd: WEBRTC_CHECKOUT_SRC });
 
