@@ -13,6 +13,7 @@
     "build-webrtc": "jake build-webrtc",
     "checkout-depot_tools": "jake checkout-depot_tools",
     "checkout-webrtc": "jake checkout-webrtc",
+    "clean": "jake clean",
     "copy-webrtc": "jake copy-webrtc",
     "copy-webrtc-headers": "jake copy-webrtc-headers",
     "install": "jake",
