@@ -16,7 +16,7 @@ function gn(cwd, execOptions) {
     stdio: 'inherit'
   }, execOptions);
 
-  var cmd = GN + ' gen ' + cwd + ' --args=\'is_debug=' + (config.CONFIGURATION !== 'Release') + '\'';
+  var cmd = GN + ' gen ' + cwd + ' --args=\'is_debug=' + (config.CONFIGURATION !== 'Release') + ' rtc_include_tests=false\'';
 
   return execSync(cmd, execOptions);
 }
