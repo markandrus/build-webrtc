@@ -1,6 +1,8 @@
+/* global task:false */
 'use strict';
 
 var config = require('./config');
+var jake = require('jake');
 
 task('clean', function() {
   jake.rmRf(config.WEBRTC_OUT);
