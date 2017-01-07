@@ -1,3 +1,4 @@
+/* global desc:false, task:false */
 'use strict';
 
 var gn = require('./gn');

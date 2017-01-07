@@ -1,7 +1,7 @@
 'use strict';
 
 var config = require('./config');
-var execSync = require('child_process').execSync;
+var execFileSync = require('child_process').execFileSync;
 
 var GN = config.GN;
 
@@ -16,9 +16,9 @@ function gn(cwd, execOptions) {
     stdio: 'inherit'
   }, execOptions);
 
-  var cmd = GN + ' gen ' + cwd + ' --args=\'is_debug=' + (config.CONFIGURATION !== 'Release') + ' rtc_include_tests=false\'';
+  var args = ['gen', cwd, '--args=is_debug=' + (config.CONFIGURATION !== 'Release') + ' rtc_include_tests=false'];
 
-  return execSync(cmd, execOptions);
+  return execFileSync(GN, args, execOptions);
 }
 
 module.exports = gn;

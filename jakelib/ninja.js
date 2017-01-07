@@ -1,7 +1,7 @@
 'use strict';
 
 var config = require('./config');
-var execSync = require('child_process').execSync;
+var execFileSync = require('child_process').execFileSync;
 
 var NINJA = config.NINJA;
 
@@ -16,9 +16,9 @@ function ninja(cwd, execOptions) {
     stdio: 'inherit'
   }, execOptions);
 
-  var cmd = NINJA + ' -C ' + cwd;
+  var args = ['-C', cwd];
 
-  return execSync(cmd, execOptions);
+  return execFileSync(NINJA, args, execOptions);
 }
 
 module.exports = ninja;
