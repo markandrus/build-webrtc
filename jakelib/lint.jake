@@ -1,9 +1,9 @@
 /* global desc:false, task:false */
 'use strict';
 
-var execSync = require('child_process').execSync;
+var execFileSync = require('child_process').execFileSync;
 
 desc('Lint the build scripts');
 task('lint', function() {
-  execSync('npm run lint', { stdio: 'inherit' });
+  execFileSync('npm', ['run', 'lint'], { stdio: 'inherit' });
 });

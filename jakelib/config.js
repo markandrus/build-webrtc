@@ -34,6 +34,7 @@ var DEPOT_TOOLS_CHECKOUT = resolve(process.env.DEPOT_TOOLS_CHECKOUT || DEFAULT_D
 var DEPOT_TOOLS_REPO = process.env.DEPOT_TOOLS_REPO || DEFAULT_DEPOT_TOOLS_REPO;
 var GCLIENT = path.join(DEPOT_TOOLS_CHECKOUT, 'gclient');
 var NINJA = path.join(DEPOT_TOOLS_CHECKOUT, 'ninja');
+var GN = path.join(DEPOT_TOOLS_CHECKOUT, 'gn');
 var PYTHON = PLATFORM === 'win32' ? path.join(DEPOT_TOOLS_CHECKOUT, 'python.bat') : 'python';
 
 var OUT = resolve(process.env.OUT || DEFAULT_OUT);
@@ -87,6 +88,7 @@ exports.CONFIGURATION = CONFIGURATION;
 exports.DEPOT_TOOLS_CHECKOUT = DEPOT_TOOLS_CHECKOUT;
 exports.DEPOT_TOOLS_REPO = DEPOT_TOOLS_REPO;
 exports.GCLIENT = GCLIENT;
+exports.GN = GN;
 exports.NINJA = NINJA;
 exports.OUT = OUT;
 exports.OUT_COMMIT = OUT_COMMIT;
