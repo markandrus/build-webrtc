@@ -33,7 +33,7 @@ var CONFIGURATION = process.env.CONFIGURATION || DEFAULT_CONFIGURATION;
 var DEPOT_TOOLS_CHECKOUT = resolve(process.env.DEPOT_TOOLS_CHECKOUT || DEFAULT_DEPOT_TOOLS_CHECKOUT);
 var DEPOT_TOOLS_REPO = process.env.DEPOT_TOOLS_REPO || DEFAULT_DEPOT_TOOLS_REPO;
 var GCLIENT = path.join(DEPOT_TOOLS_CHECKOUT, 'gclient');
-var NINJA = path.join(DEPOT_TOOLS_CHECKOUT, 'ninja');
+var NINJA = process.env.NINJA || path.join(DEPOT_TOOLS_CHECKOUT, 'ninja');
 var PYTHON = PLATFORM === 'win32' ? path.join(DEPOT_TOOLS_CHECKOUT, 'python.bat') : 'python';
 
 var OUT = resolve(process.env.OUT || DEFAULT_OUT);

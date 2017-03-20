@@ -26,7 +26,7 @@ switch (PLATFORM) {
     break;
 
   case 'linux':
-    GYP_DEFINES.push('clang=1');
+    // GYP_DEFINES.push('clang=1');
     if (!process.env.JAVA_HOME) {
       process.env.JAVA_HOME = fs.existsSync('/usr/lib/jvm/java')
         ? '/usr/lib/jvm/java'
